@@ -21,7 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
     	}
     	xhr.open("GET","https://contacttracerapp.herokuapp.com/updatesick?sick="+document.getElementById("sick").value,true);
     	xhr.send();
-    })
+    });
+    document.getElementById('send2').addEventListener('click',function(){
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("result1").innerHTML = "";
+        var latlon = document.getElementById('loc').innerHTML.split(",");
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            document.getElementById('result2').innerHTML = xhr.responseText;
+        }
+        xhr.open("GET","https://contacttracerapp.herokuapp.com/infected",true);
+        xhr.send();
+    });
 })
 
 // Geolocation callback
