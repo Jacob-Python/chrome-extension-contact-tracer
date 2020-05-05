@@ -1,0 +1,101 @@
+#header, h3, h1, p, .addendum{
+	color: #FEFEFE;
+	font-family: Arial;
+}
+input[type=range] {
+  border-radius: 30%;
+  -webkit-appearance: none;
+  width: 50px;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type=range]:hover {
+  opacity: 1;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #708DFF;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+button {
+	border-radius: 10px;
+	background-color: #708DFF;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+button:hover{
+	 background-color: #008CBA;
+}
+input{
+	border-radius: 25px;
+}
+body {
+	background-color: #070707;
+}
+#header{
+	background-color: #FEFEFE;
+}
+.addendum{
+	font-size: 20;
+	color: #708DFF;
+}
+.addendum:hover{
+	color: #008CBA;
+}
+#buttons{
+	float: right;
+	position: absolute;
+	top:10px;
+	left: 600px;
+}
+.header{
+	border-radius: 25px;
+	border: 5px solid #008CBA;
+	background-color: #070707;
+	padding: 20px;
+	width: 500px;
+	height: 30px;
+}
+#bottom{
+	background-color: #FEFEFE;
+	position: absolute;
+	bottom:0px;
+	width: 1350px;
+}
+.blk{
+	font-family: Arial;
+	color: #070707;
+}
+.lnk{
+	font-family: Arial;
+	font-size: 18px;
+}
+
+.header-logo{
+	width: 50px;
+	border: 5px solid #070707;
+	border-radius: 35%
+}

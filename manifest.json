@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Contact Tracer v0.1",
+  "version": "0.1",
+  "description": "This app is designed to aid in contact tracing.",
+  "permissions":["storage","geolocation","tabs","https://contacttracerapp.herokuapp.com/*"],
+  "browser_action":{
+    "default_popup": "popup.html"
+  },
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+  }
+}
