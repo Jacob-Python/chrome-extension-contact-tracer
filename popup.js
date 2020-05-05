@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     navigator.geolocation.getCurrentPosition(showMap);
+    // Request to SQL server to change value of lat,lon
     document.getElementById('send').addEventListener('click',function(){
+    	document.getElementById("result1").innerHTML = ""
     	var latlon = document.getElementById('loc').innerHTML.split(",")
     	var xhr = new XMLHttpRequest();
     	xhr.onreadystatechange = function(){
@@ -9,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     	xhr.open("GET","https://contacttracerapp.herokuapp.com/updatelatlon?lat="+latlon[0]+"&lon="+latlon[1],true);
     	xhr.send();
     })
+    // Request to SQL server to change value of sick flag
     document.getElementById('send1').addEventListener('click',function(){
+    	document.getElementById("result").innerHTML = ""
     	var latlon = document.getElementById('loc').innerHTML.split(",")
     	var xhr = new XMLHttpRequest();
     	xhr.onreadystatechange = function(){
@@ -20,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 
+// Geolocation callback
 function showMap(data){
     document.getElementById('loc').innerHTML = data.coords.latitude+","+data.coords.longitude;
 }
