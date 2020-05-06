@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     navigator.geolocation.getCurrentPosition(showMap);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        document.getElementById('sick').value = xhr.responseText;
+    }
+    xhr.open("GET","https://contacttracerapp.herokuapp.com/issick",true);
+    xhr.send();
     // Request to SQL server to change values
     document.getElementById('send1').addEventListener('click',function(){
     	document.getElementById("result").innerHTML = ""
