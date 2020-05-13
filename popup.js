@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var win = window.open("https://contacttracerapp.herokuapp.com/logout","_blank")
         win.focus();
     });
+    console.log(banner)
     if (banner == 1) {
         document.getElementById("covid-banner").hidden = false;
     } else {
@@ -77,11 +78,10 @@ function display(data){
 }
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if (request.covid) {
+    if (request.covid == 1) {
         document.getElementById("covid-banner").hidden = false;
-        banner = 1;
     } else {
         document.getElementById("covid-banner").hidden = true;
-        banner = 0;
     }
+    banner = request.covid;
 });

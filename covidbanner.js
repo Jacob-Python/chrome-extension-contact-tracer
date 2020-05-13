@@ -10,7 +10,7 @@ window.onload = function() {
 		    }
 		}
 		// Add alert button
-		chrome.runtime.sendMessage({"covid": r == 1}, function(response){});
+		chrome.runtime.sendMessage({"covid": r}, function(response){});
 		uint ++;
 	}
 }
