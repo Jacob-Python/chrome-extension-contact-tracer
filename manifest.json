@@ -3,7 +3,7 @@
   "name": "CoronaNet v0.1",
   "version": "0.1",
   "description": "This app is designed to aid in staying safe during the pandemic.",
-  "permissions":["storage","geolocation","tabs","https://contacttracerapp.herokuapp.com/*"],
+  "permissions":["geolocation","https://contacttracerapp.herokuapp.com/*"],
   "browser_action":{
     "default_popup": "popup.html"
   },
@@ -14,5 +14,11 @@
     "icons": {
     "16": "assets/favicon-16x16.png",
     "32": "assets/favicon-32x32.png"
-  }
+  },
+  "content_scripts": [
+    {
+    "matches":["<all_urls>"],
+    "js":["covidbanner.js"]
+    }
+  ]
 }

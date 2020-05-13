@@ -1,3 +1,4 @@
+let banner = 0;
 document.addEventListener('DOMContentLoaded', function() {
     navigator.geolocation.getCurrentPosition(display);
     // Set slider value to server value.
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     	document.getElementById("result").innerHTML = ""
         document.getElementById("result2").innerHTML = ""
         document.getElementById("result3").innerHTML = "";
+        document.getElementById("result4").innerHTML = "";
     	var latlon = document.getElementById('loc').innerHTML.split(",")
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
@@ -25,12 +27,27 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("result").innerHTML = "";
         document.getElementById("result1").innerHTML = "";
         document.getElementById("result3").innerHTML = "";
+        document.getElementById("result4").innerHTML = "";
         var latlon = document.getElementById('loc').innerHTML.split(",");
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
             document.getElementById("result2").innerHTML = xhr.responseText;
         }
         xhr.open("GET","https://contacttracerapp.herokuapp.com/infected?lat="+latlon[0]+"&lon="+latlon[1],true);
+        xhr.send();
+    });
+    // Request if you are at risk.
+    document.getElementById('send3').addEventListener('click',function(){
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("result1").innerHTML = "";
+        document.getElementById("result2").innerHTML = "";
+        document.getElementById("result4").innerHTML = "";
+        var latlon = document.getElementById('loc').innerHTML.split(",");
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            document.getElementById("result3").innerHTML = xhr.responseText;
+        }
+        xhr.open("GET","https://contacttracerapp.herokuapp.com/atrisk?lat="+latlon[0]+"&lon="+latlon[1],true);
         xhr.send();
     });
     // Request for history.
@@ -40,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("result2").innerHTML = "";
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function(){
-            document.getElementById("result3").innerHTML = xhr.responseText;
+            document.getElementById("result4").innerHTML = xhr.responseText;
         }
         xhr.open("GET","https://contacttracerapp.herokuapp.com/history",true);
         xhr.send();
@@ -49,7 +66,22 @@ document.addEventListener('DOMContentLoaded', function() {
         var win = window.open("https://contacttracerapp.herokuapp.com/logout","_blank")
         win.focus();
     });
+    if (banner == 1) {
+        document.getElementById("covid-banner").hidden = false;
+    } else {
+        document.getElementById("covid-banner").hidden = true;
+    }
 })
 function display(data){
     document.getElementById('loc').innerHTML = data.coords.latitude+","+data.coords.longitude;
 }
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.covid) {
+        document.getElementById("covid-banner").hidden = false;
+        banner = 1;
+    } else {
+        document.getElementById("covid-banner").hidden = true;
+        banner = 0;
+    }
+});
