@@ -5,7 +5,7 @@ window.onload = function() {
 		let r = 0;
 		var keyPhrases = ["coronavirus", "covid-19","sars-cov-2","2019-ncov"];
 		for (const key in keyPhrases){
-			if (document.documentElement.innerHTML.toLowerCase().indexOf(key) != -1){
+			if (document.documentElement.innerHTML.toLowerCase().indexOf(key) != -1 || decodeURIComponent(window.location.href.toLowerCase().replace("+"," ")).indexOf(key) != -1){
 				r = 1;
 		    }
 		}
