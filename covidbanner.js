@@ -1,5 +1,8 @@
 let uint = 0;
 window.onload = function() {
+	covidfun();
+}
+function covidfun(){
 	if (uint == 0){
 		// Find instances of "coronavirus" in page
 		let r = 0;
